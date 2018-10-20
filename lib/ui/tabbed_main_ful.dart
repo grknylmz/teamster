@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../ui/main_list.dart';
-import 'chat.dart';
+import '../ui/main_ful.dart';
+import 'chat_less.dart';
 
 class MainApp extends StatefulWidget {
   _MainAppState createState() => _MainAppState();
@@ -15,30 +15,26 @@ class _MainAppState extends State<MainApp> with SingleTickerProviderStateMixin {
   }
 
   build(context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: Center(
-            child: Text(
-              'teamster',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.redAccent,
-                fontSize: 22.0,
-                fontFamily: 'Run',
-              ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Center(
+          child: Text(
+            'teamster',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.redAccent,
+              fontSize: 22.0,
+              fontFamily: 'Run',
             ),
           ),
         ),
-        //body: MainList(),
-        body: TabBarView(
-          children: <Widget>[new MainList(), new ChatApp()],
-          controller: controller,
-        ),
-        bottomNavigationBar: bottomNavigationBuilder(),
       ),
+      body: TabBarView(
+        children: <Widget>[new MainList(), new ChatApp()],
+        controller: controller,
+      ),
+      bottomNavigationBar: bottomNavigationBuilder(),
     );
   }
 

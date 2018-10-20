@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../ui/tabbed_main.dart';
+import '../ui/tabbed_main_ful.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -20,10 +20,10 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
       children: <Widget>[
         header(),
         newTextField('E-Mail'),
-        newTextInput('ornek@eposta.com'),
+        newTextInput('ornek@eposta.com', false),
         divider(),
         newTextField('Şifre'),
-        newTextInput('**********'),
+        newTextInput('**********', true),
         divider(),
         rightAlignedText('Şifremi Unuttum'),
         pushButtonMiddle('Giriş'),
@@ -82,7 +82,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
     );
   }
 
-  Widget newTextInput(String hint) {
+  Widget newTextInput(String hint, bool obsecure) {
     return new Container(
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.only(left: 40.0, right: 40.0, top: 10.0),
@@ -100,7 +100,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
         children: <Widget>[
           new Expanded(
             child: TextField(
-              obscureText: true,
+              obscureText: obsecure,
               textAlign: TextAlign.left,
               decoration: InputDecoration(
                 border: InputBorder.none,
@@ -145,31 +145,34 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
       child: new Row(
         children: <Widget>[
           new Expanded(
-            child: new FlatButton(
-              shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(30.0),
-              ),
-              color: Colors.redAccent,
-              onPressed: () {
-                goMain();
-              },
-              child: new Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 20.0,
-                  horizontal: 20.0,
+            child: Padding(
+              padding: EdgeInsets.only(left: 40.0, right: 40.0),
+              child: new FlatButton(
+                shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(30.0),
                 ),
-                child: new Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    new Expanded(
-                      child: Text(
-                        text,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                color: Colors.redAccent,
+                onPressed: () {
+                  goMain();
+                },
+                child: new Container(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 20.0,
+                    horizontal: 20.0,
+                  ),
+                  child: new Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      new Expanded(
+                        child: Text(
+                          text,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

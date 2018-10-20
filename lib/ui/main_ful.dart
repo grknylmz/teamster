@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'map_less.dart';
 
 class MainList extends StatefulWidget {
   _MainListState createState() => _MainListState();
@@ -20,32 +21,40 @@ class _MainListState extends State<MainList> {
   }
 
   Widget mapCard() {
-    return new Card(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 2.0),
-            child: Text(
-              'Harita',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.redAccent,
-                fontSize: 16.0,
-                fontFamily: 'Run',
+    return InkWell(
+      highlightColor: Colors.redAccent,
+      splashColor: Colors.redAccent,
+      onTap: () {
+        print('TAP to MAP -> MAPView');
+        openMapView();
+      },
+      child: new Card(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 2.0),
+              child: Text(
+                'Harita',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.redAccent,
+                  fontSize: 16.0,
+                  fontFamily: 'Run',
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Image.asset(
-              'lib/assets/map.png',
-              width: 400.0,
-              height: 100.0,
-              fit: BoxFit.cover,
-            ),
-          )
-        ],
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Image.asset(
+                'lib/assets/map.png',
+                width: 400.0,
+                height: 100.0,
+                fit: BoxFit.cover,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -127,6 +136,13 @@ class _MainListState extends State<MainList> {
           ),
         ],
       ),
+    );
+  }
+
+  openMapView() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Map()),
     );
   }
 }
