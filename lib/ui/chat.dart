@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'login.dart';
+import 'chat_screen.dart';
 
-class LoginScreen extends StatelessWidget {
+class ChatApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Login(),
+      child: ChatScreen(),
     );
   }
 }
